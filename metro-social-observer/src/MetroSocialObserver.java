@@ -1,29 +1,19 @@
-/**
- * The main file of the application
- */
+import java.io.IOException;
 
-
-/**
- * @author dodev
- *
- */
 public class MetroSocialObserver {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// adds a handler that will terminate all the currently active modules before exiting the application
-		Runtime.getRuntime().addShutdownHook(new ExitHookThread());
-		
-		System.out.println("waiting 5 seconds");
-		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println("and exiting");
+  public static void main(String[] args) {
+	  
+	  
+	  try {
+		  JsonServer server = new JsonServer();
+		  server.start();
+		  
+		  Thread exitHook = new ExitHookThread(server);
+		  Runtime.getRuntime().addShutdownHook(exitHook);
+	} catch (Exception e) {
+		  // TODO Auto-generated catch block
+		  e.printStackTrace();
 	}
+  }
 }
+
