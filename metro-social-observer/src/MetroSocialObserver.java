@@ -7,15 +7,15 @@ public class MetroSocialObserver {
 		  Runtime.getRuntime().addShutdownHook(exitHook);
 		  
 		  server.start();
-		  System.out.println("Staring server and waiting 5sec");
+		  Logger.notice("Staring server and waiting 5sec");
 		  Thread.sleep(5000);
 		  
-		  System.out.println("Stopping server and waiting 5sec");
+		  Logger.notice("Stopping server and waiting 5sec");
 		  server.stop();
 		  Thread.sleep(5000);
-		  System.out.println("And shutting down");
+		  Logger.notice("And shutting down");
 	} catch (Exception e) {
-		  // TODO Auto-generated catch block
+		  Logger.error(e.toString());
 		  e.printStackTrace();
 	}
   }

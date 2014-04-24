@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.Executors;
 import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -27,14 +29,15 @@ public class JsonServer {
 	}
 	
 	public void stop() {
-		System.out.println("Starting server stopping procedure");
+		Logger.notice("Starting server stopping procedure");
 		this._server.stop(1);
-		System.out.println("Ending server stopping procedure");
+		Logger.notice("Ending server stopping procedure");
 	}
 	
 	private class RequestHandler implements HttpHandler {
 		public void handle(HttpExchange exchange) throws IOException {
-			System.out.println("hangling request");
+			String timestamp = new SimpleDateFormat("HH:mm:ss.SSS").format(Calendar.getInstance().getTime());
+			Logger.notice(timestamp + ": hangling request");
 			String requestMethod = exchange.getRequestMethod();
 		    if (requestMethod.equalsIgnoreCase("GET")) {
 		    	Headers responseHeaders = exchange.getResponseHeaders();

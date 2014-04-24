@@ -14,7 +14,7 @@ public class ExitHookThread extends Thread {
 	}
 	
 	public void run() {
-		System.out.println("shutting down http json server");
+		Logger.notice("shutting down http json server");
 		this._jsonServer.stop();
 	}
 }
