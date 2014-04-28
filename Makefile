@@ -6,4 +6,7 @@ libs:
 	unzip -jo -d $(LIBFOLDER) tmp/twitter4j-4.0.1.zip "lib/*"
 	rm -rf tmp/
 
-.PHONY: libs
+run:
+	java metro-social-observer/bin/MetroSocialObserver
+
+.PHONY: libs run
