@@ -24,6 +24,8 @@ public class Configurator {
 	private Configurator() {
 		this.hash = new HashMap<String, String>();
 		this.hash.put("server-port", "8080");
+		
+		// TODO: load from file
 	}
 	
 	public String get(String key) {
