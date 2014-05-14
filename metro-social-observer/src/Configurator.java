@@ -24,6 +24,8 @@ public class Configurator {
 	private Configurator() {
 		this.hash = new HashMap<String, String>();
 		this.hash.put("server-port", "8080");
+		this.hash.put("scheme-url", "http://localhost/schemes/");
+		this.hash.put("scheme-files", "1.json");
 		
 		// TODO: load from file
 	}

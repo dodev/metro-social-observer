@@ -1,6 +1,9 @@
 public class MetroSocialObserver {
   public static void main(String[] args) {
 	  try {
+		  // init scheme storage
+		  SchemeStorage.getInstance().loadFromExternalStorage();
+		  
 		  DynamicDataServer server = new DynamicDataServer();
 		  
 		  Thread exitHook = new ExitHookThread(server);

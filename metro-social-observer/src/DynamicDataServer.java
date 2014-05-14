@@ -75,7 +75,9 @@ public class DynamicDataServer {
 	    			int schemeId = supportedSchemes.get(schemeName);
 	    			String response = responseCache.getLatestResponseForId(schemeId);
 	    			if (response != null) {
+	    				responseBody.write("{\"warnings\":".getBytes());
 	    				responseBody.write(response.getBytes());
+	    				responseBody.write("}".getBytes());
 	    			} else {
 	    				responseBody.write(jsonError3.getBytes());
 	    			}

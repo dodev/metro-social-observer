@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  * 
@@ -25,7 +28,7 @@ public class Scheme {
 	private HashMap<Integer, Link> linkHash;
 	
 	
-	public Scheme(String jsonString) {
+	public Scheme(String jsonString) throws ParseException {
 		this.lines = new ArrayList<Line>();
 		this.lineHash = new HashMap<Integer, Line>();
 		
@@ -35,13 +38,16 @@ public class Scheme {
 		this.links = new ArrayList<Link>();
 		this.linkHash = new HashMap<Integer, Link>();
 		
-		// TODO: parse id
-		this.id = 1;
+		JSONParser parser = new JSONParser();
 		
-		// TODO: parse name
-		this.name = "moscow";
+		JSONObject obj = (JSONObject)parser.parse(jsonString);
+		
+		this.id = Integer.parseInt(obj.get("id").toString(), 10);
+		this.name = (String)obj.get("name");
 		
 		this.warningLevel = 0;
+		
+		Logger.notice("loaded scheme " + this.name + " with id " + this.id);
 	}
 
 	/**
