@@ -39,4 +39,11 @@ public class IterationStorage {
 		
 		this.responseCache.put(iteration.getScheme().getId(), respText);
 	}
+	
+	public String getLatestResponseForId(int id) {
+		if (this.responseCache.containsKey(id)) {
+			return responseCache.get(id);			
+		}
+		return null;
+	}
 }
