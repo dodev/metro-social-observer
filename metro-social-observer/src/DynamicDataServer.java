@@ -15,9 +15,11 @@ import com.sun.net.httpserver.HttpServer;
 
 public class DynamicDataServer {
 	private HttpServer _server;
+	private int port;
 	
 	public DynamicDataServer () throws IOException {
-		InetSocketAddress addr = new InetSocketAddress(8080);
+		this.port = Integer.parseInt(Configurator.getInstance().get("server-port"),10);
+		InetSocketAddress addr = new InetSocketAddress(this.port);
 	    this._server = HttpServer.create(addr, 0);	
 	}
 	
@@ -25,7 +27,7 @@ public class DynamicDataServer {
 	    this._server.createContext("/", new RequestHandler());
 	    this._server.setExecutor(Executors.newCachedThreadPool());
 	    this._server.start();
-	    System.out.println("Server is listening on port 8080" );
+	    Logger.notice("Server is listening on port " + this.port);
 	}
 	
 	public void stop() {
