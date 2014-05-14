@@ -1,6 +1,7 @@
 /**
  * 
  */
+import org.json.simple.*;
 
 /**
  * @author dodev
@@ -81,4 +82,13 @@ public class Iteration {
 		Logger.notice("Iteration started at " + this.timeStarted);
 	}
 
+	public JSONArray getJsonResultArray() {
+		JSONArray arr = new JSONArray();
+		
+		for (int i = 0; i < this.results.length; i++) {
+			arr.add(this.results[i].getJsonObject());
+		}
+		
+		return arr;
+	}
 }
