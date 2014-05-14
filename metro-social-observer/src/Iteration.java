@@ -76,6 +76,13 @@ public class Iteration {
 	
 	private Scheme scheme;
 	
+	/**
+	 * @return the scheme
+	 */
+	public Scheme getScheme() {
+		return scheme;
+	}
+
 	public Iteration(Scheme sc) {
 		this.scheme = sc;
 		this.timeStarted = System.currentTimeMillis() / 1000L;
