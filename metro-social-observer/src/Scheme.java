@@ -12,5 +12,9 @@ public class Scheme {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public String getName(){
+		return "";		
+	}
 
 }

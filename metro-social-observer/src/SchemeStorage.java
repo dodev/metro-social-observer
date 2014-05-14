@@ -38,6 +38,7 @@ public class SchemeStorage {
 	}
 	
 	public Scheme[] getSchemesArray() {
-		return (Scheme[]) this.schemesHash.values().toArray();
+		Scheme[] a = {};
+		return this.schemesHash.values().toArray(a);
 	}
 }

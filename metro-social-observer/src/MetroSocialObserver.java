@@ -8,11 +8,10 @@ public class MetroSocialObserver {
 		  
 		  server.start();
 		  Logger.notice("Staring server and waiting 5sec");
-		  Thread.sleep(5000);
+		  Thread.sleep(50000);
 		  
 		  Logger.notice("Stopping server and waiting 5sec");
 		  server.stop();
-		  Thread.sleep(5000);
 		  Logger.notice("And shutting down");
 	} catch (Exception e) {
 		  Logger.error(e.toString());
