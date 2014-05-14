@@ -13,10 +13,10 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-public class JsonServer {
+public class DynamicDataServer {
 	private HttpServer _server;
 	
-	public JsonServer () throws IOException {
+	public DynamicDataServer () throws IOException {
 		InetSocketAddress addr = new InetSocketAddress(8080);
 	    this._server = HttpServer.create(addr, 0);	
 	}

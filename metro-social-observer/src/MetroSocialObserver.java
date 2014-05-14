@@ -1,7 +1,7 @@
 public class MetroSocialObserver {
   public static void main(String[] args) {
 	  try {
-		  JsonServer server = new JsonServer();
+		  DynamicDataServer server = new DynamicDataServer();
 		  
 		  Thread exitHook = new ExitHookThread(server);
 		  Runtime.getRuntime().addShutdownHook(exitHook);

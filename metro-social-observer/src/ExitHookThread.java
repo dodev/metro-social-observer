@@ -7,9 +7,9 @@
  *
  */
 public class ExitHookThread extends Thread {
-	private JsonServer _jsonServer;
+	private DynamicDataServer _jsonServer;
 	
-	public ExitHookThread (JsonServer jsonServer) {
+	public ExitHookThread (DynamicDataServer jsonServer) {
 		this._jsonServer = jsonServer;
 	}
 	
