@@ -31,14 +31,12 @@ public class SchemeStorage {
 	}
 	
 	public void loadFromExternalStorage() throws Exception {
-		// TODO: write the loading implementation
 		Configurator conf = Configurator.getInstance();
 		String url = conf.get("scheme-url");
 		String[] files = conf.get("scheme-files").split(",");
 		
 		for (int i = 0; i < files.length; i++) {
 			String json = readUrl(url + files[i]);
-			Logger.notice(json);
 			Scheme sc = new Scheme(json);
 			this.schemesHash.put(sc.getId(), sc);
 		}
