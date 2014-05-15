@@ -56,7 +56,7 @@ public class DynamicDataServer {
 	private class RequestHandler implements HttpHandler {
 		public void handle(HttpExchange exchange) throws IOException {
 			String timestamp = new SimpleDateFormat("HH:mm:ss.SSS").format(Calendar.getInstance().getTime());
-			Logger.notice(timestamp + ": hangling request");
+			Logger.notice("[http-server]/" + timestamp + ": hangling request");
 		    
 	    	Map<String, Object> parameters = new HashMap<String, Object>();
 	        URI requestedUri = exchange.getRequestURI();
@@ -65,12 +65,15 @@ public class DynamicDataServer {
 	    	
 	    	Headers responseHeaders = exchange.getResponseHeaders();
 	    	responseHeaders.set("Content-Type", "application/json");
+            responseHeaders.set("Access-Control-Allow-Origin", "*");
+
 	    	exchange.sendResponseHeaders(200, 0);
 	    	OutputStream responseBody = exchange.getResponseBody();
 	    	
 	    	if (parameters.containsKey("scheme")) {
 	    		
 	    		String schemeName = (String)parameters.get("scheme");
+	    		Logger.notice("[http-server]/" + timestamp + ": fetching data for scheme " + schemeName);
 	    		if (supportedSchemes.containsKey(schemeName)) {
 	    			int schemeId = supportedSchemes.get(schemeName);
 	    			String response = responseCache.getLatestResponseForId(schemeId);

@@ -5,10 +5,6 @@ import java.net.URLConnection;
 import java.util.HashMap;
 
 /**
- * 
- */
-
-/**
  * @author dodev
  *
  */

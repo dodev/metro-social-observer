@@ -115,6 +115,17 @@ public class Analyzer {
 		private Warning[] traverseScheme() {
 			ArrayList<Warning> res = new ArrayList<Warning>();
 			// TODO: create scheme object traversal procedure
+			if (scheme.getId() == 1) {
+				// kaluzhko-rizhskaya
+				res.add(new Warning("link", 122, 1));
+				res.add(new Warning("link", 123, 1));
+				res.add(new Warning("link", 124, 1));
+				res.add(new Warning("link", 125, 1));
+				
+				// kol'tsevaya
+				res.add(new Warning("link", 96, 1));
+				res.add(new Warning("link", 97, 1));
+			}
 			Warning[] a = {};
 			return res.toArray(a);
 		}
