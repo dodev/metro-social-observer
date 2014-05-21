@@ -51,6 +51,27 @@ public class Scheme {
 	}
 
 	/**
+	 * @return the lines
+	 */
+	public ArrayList<Line> getLines() {
+		return lines;
+	}
+
+	/**
+	 * @return the stations
+	 */
+	public ArrayList<Station> getStations() {
+		return stations;
+	}
+
+	/**
+	 * @return the links
+	 */
+	public ArrayList<Link> getLinks() {
+		return links;
+	}
+
+	/**
 	 * @return the warningLevel
 	 */
 	public int getWarningLevel() {

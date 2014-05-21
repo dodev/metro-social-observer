@@ -1,8 +1,9 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
- * 
+ * Analyzer implements the infrastructure for the the data processing modules
  */
 
 /**
@@ -12,15 +13,21 @@ import java.util.ArrayList;
 public class Analyzer {
 
 	/**
-	 * 
-	 */
-	
-	private ArrayList<Thread> workers;
+	 * Storage representation properties
+	 */	
 	private SchemeStorage schemeStorage;
 	private IterationStorage iterationStorage;
+	
+	/**
+	 * Workflow control properties
+	 */
+	private ArrayList<Thread> workers;
 	private int isAliveCheckTime;
 	private boolean isAlive;
 	
+	/**
+	 * The IAnalyzerFactory class family
+	 */
 	private IAnalyzerFactory factory;
 	private IDataSource dataSource;
 	private IDataPreprocessor preprocessor;
@@ -85,7 +92,6 @@ public class Analyzer {
 				while (true) {
 					Logger.notice("getting some work done for scheme " + this.scheme.getName());
 					
-					// TODO: add error handling
 					Iteration iteration = iterationStorage.createIteration(this.scheme);
 					
 					Object[] rawDocs = dataSource.executeRequest(this.scheme);
@@ -114,18 +120,28 @@ public class Analyzer {
 		
 		private Warning[] traverseScheme() {
 			ArrayList<Warning> res = new ArrayList<Warning>();
-			// TODO: create scheme object traversal procedure
-			if (scheme.getId() == 1) {
-				// kaluzhko-rizhskaya
-				res.add(new Warning("link", 122, 1));
-				res.add(new Warning("link", 123, 1));
-				res.add(new Warning("link", 124, 1));
-				res.add(new Warning("link", 125, 1));
-				
-				// kol'tsevaya
-				res.add(new Warning("link", 96, 1));
-				res.add(new Warning("link", 97, 1));
+			
+			ArrayList<Line> lines = scheme.getLines();
+			for (Line line: lines) {
+				if (line.getWarningLevel() > 0) {
+					res.add(new Warning("line", line.getId(), line.getWarningLevel()));
+				}
 			}
+			
+			Collection<Link> links = scheme.getLinks();
+			for (Link link: links) {
+				if (link.getWarningLevel() > 0) {
+					res.add(new Warning("link", link.getId(), link.getWarningLevel()));
+				}
+			}
+			
+			Collection<Station> stations = scheme.getStations();
+			for (Station station: stations) {
+				if (station.getWarningLevel() > 0) {
+					res.add(new Warning("station", station.getId(), station.getWarningLevel()));
+				}
+			}
+			
 			Warning[] a = {};
 			return res.toArray(a);
 		}
