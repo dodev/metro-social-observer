@@ -6,7 +6,7 @@
  * @author dodev
  *
  */
-public class Station {
+public class Station implements INamedSchemeObject {
 
 	/**
 	 * 
@@ -44,5 +44,10 @@ public class Station {
 	
 	public String getName(){
 		return name;		
+	}
+	
+	@Override
+	public String[] getAliases() {		
+		return new String[]{name};
 	}
 }

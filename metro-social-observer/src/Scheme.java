@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
  * @author dodev
  *
  */
-public class Scheme {
+public class Scheme implements INamedSchemeObject {
 	
 	private int id;
 	private String name;
@@ -92,5 +92,9 @@ public class Scheme {
 	public String getName(){
 		return name;		
 	}
-
+	
+	@Override
+	public String[] getAliases() {		
+		return new String[]{name};
+	}
 }

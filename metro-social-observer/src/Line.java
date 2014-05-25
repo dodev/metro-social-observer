@@ -6,7 +6,7 @@
  * @author dodev
  *
  */
-public class Line {
+public class Line implements INamedSchemeObject {
 	
 	
 
@@ -47,6 +47,11 @@ public class Line {
 	
 	public String getName(){
 		return name;		
+	}
+
+	@Override
+	public String[] getAliases() {		
+		return new String[]{name};
 	}
 
 }

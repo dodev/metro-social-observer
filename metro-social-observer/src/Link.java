@@ -6,7 +6,7 @@
  * @author dodev
  *
  */
-public class Link {
+public class Link implements ISchemeObject {
 
 	/**
 	 * 
