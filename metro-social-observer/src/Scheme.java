@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
@@ -47,18 +48,7 @@ public class Scheme implements INamedSchemeObject {
 		this.id = Integer.parseInt(obj.get("id").toString(), 10);
 		this.name = (String)obj.get("name");
 		this.stringId = (String)obj.get("stringId");
-		
-		HashMap<String, Object> linesMap = (HashMap<String, Object>)obj.get("lines");
-		for (String key: linesMap.keySet()) {
-			JSONObject lineObj = (JSONObject)linesMap.get(key);
-			int id = Integer.parseInt(key, 10);
-			String lineName = (String)lineObj.get("name");
 			
-			Line line = new Line(id, lineName);
-			this.lines.add(line);
-			this.lineHash.put(id, line);
-		}
-		
 		HashMap<String, Object> stationsMap = (HashMap<String, Object>)obj.get("stations");
 		for (String key: stationsMap.keySet()) {
 			JSONObject stationObj = (JSONObject)stationsMap.get(key);
@@ -84,6 +74,31 @@ public class Scheme implements INamedSchemeObject {
 			this.linkHash.put(id, link);
 			this.linkStationHash.put(fromStId * 1000 + toStId, link);
 			this.linkStationHash.put(toStId * 1000 + fromStId, link);
+		}
+		
+		HashMap<String, Object> linesMap = (HashMap<String, Object>)obj.get("lines");
+		for (String key: linesMap.keySet()) {
+			JSONObject lineObj = (JSONObject)linesMap.get(key);
+			int id = Integer.parseInt(key, 10);
+			String lineName = (String)lineObj.get("name");
+
+			JSONArray linkArray = (JSONArray)lineObj.get("linkIds");
+			List linkList = new ArrayList<Link>();
+			
+			for (Object o : linkArray) {
+				linkList.add(this.getLinkById(this.safeLongToInt((long)o)));
+			}
+			
+			JSONArray stationArray = (JSONArray)lineObj.get("stationIds");
+			List stationList = new ArrayList<Station>();
+			
+			for (Object o : stationArray) {
+				stationList.add(this.getStationById(this.safeLongToInt((long)o)));
+			}
+
+			Line line = new Line(id, lineName, stationList, linkList, this);
+			this.lines.add(line);
+			this.lineHash.put(id, line);
 		}
 		
 		this.warningLevel = 0;
