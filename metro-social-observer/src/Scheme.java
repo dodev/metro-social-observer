@@ -96,7 +96,7 @@ public class Scheme implements INamedSchemeObject {
 				stationList.add(this.getStationById(this.safeLongToInt((long)o)));
 			}
 
-			Line line = new Line(id, lineName, stationList, linkList, this);
+			Line line = new Line(id, lineName, stationList, linkList);
 			this.lines.add(line);
 			this.lineHash.put(id, line);
 		}
@@ -189,6 +189,51 @@ public class Scheme implements INamedSchemeObject {
 			return null;
 		}
 		return this.linkStationHash.get(key);
+	}
+	
+	public Station[] getStationsBetween(Station stA, Station stB) {
+		if (stA.getLineId() != stB.getLineId()) {
+			return null;
+		}
+		List stationList = this.getLineById(stA.getLineId()).getStations();
+		ArrayList<Station> res = new ArrayList<Station>();
+		
+		int end1 = stationList.indexOf(stA);
+		int end2 = stationList.indexOf(stB);
+		
+		if (end1 == -1 || end2 == -1) {
+			Logger.error("Couldn't find stations with names: " + stA.getName() + " and " + stB.getName());
+		} else {
+			if (end1 > end2) {
+				int buf = end1;
+				end1 = end2;
+				end2 = buf;
+			}
+			
+			for (int i = end1; i < end2; i++) {
+				res.add((Station)stationList.get(i));
+			}
+		}
+		
+		Station[] demoArr = {};
+		return res.toArray(demoArr);
+	}
+	
+	public Link[] getLinksBetween(Station stA, Station stB) {
+		if (stA.getLineId() != stB.getLineId()) {
+			return null;
+		}
+		List linkList = this.getLineById(stA.getLineId()).getLinks();
+		ArrayList<Link> res = new ArrayList<Link>();
+		
+		Station[] stationArr = this.getStationsBetween(stA, stB);
+		
+		for (int i = 0; i < stationArr.length - 1; i++) {
+			this.getLinkBetweenStations(stationArr[i], stationArr[i-1]);
+		}
+		
+		Link[] demoArr = {};
+		return res.toArray(demoArr);
 	}
 	
 	private int safeLongToInt(long l) {
