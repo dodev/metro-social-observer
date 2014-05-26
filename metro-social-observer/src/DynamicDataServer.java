@@ -34,7 +34,7 @@ public class DynamicDataServer {
 	    this.supportedSchemes = new HashMap<String, Integer>();
 	    
 	    for (int i = 0; i < arr.length; i++) {
-	    	this.supportedSchemes.put(arr[i].getName(), arr[i].getId());
+	    	this.supportedSchemes.put(arr[i].getStringId(), arr[i].getId());
 	    }
 	    
 	    this.responseCache = IterationStorage.getInstance();

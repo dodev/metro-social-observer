@@ -8,21 +8,25 @@
  */
 public class Station implements INamedSchemeObject {
 
-	/**
-	 * 
-	 */
-	public Station() {
-		// TODO: populate
-		
-		this.id = 1;
-		this.name = "";
-		
-		this.warningLevel = 0;
-	}
-	
 	private int id;
 	private String name;
 	private int warningLevel;
+	private int lineId;
+
+	/**
+	 * 
+	 */
+	public Station(
+			int id,
+			String name,
+			int lineId
+			) {
+		this.id = id;
+		this.name = name;
+		this.lineId = lineId;
+		
+		this.warningLevel = 0;
+	}
 	
 	/**
 	 * @return the warningLevel
@@ -49,5 +53,12 @@ public class Station implements INamedSchemeObject {
 	@Override
 	public String[] getAliases() {		
 		return new String[]{name};
+	}
+
+	/**
+	 * @return the lineId
+	 */
+	public int getLineId() {
+		return lineId;
 	}
 }

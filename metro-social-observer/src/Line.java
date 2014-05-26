@@ -8,24 +8,23 @@
  */
 public class Line implements INamedSchemeObject {
 	
-	
+	private int id;
+	private String name;
+	private int warningLevel;
 
 	/**
 	 * 
 	 */
-	public Line() {
-		
-		// TODO: populate
-		
-		this.id = 1;
-		this.name = "";
+	public Line(
+			int id,
+			String name
+			) {
+
+		this.id = id;
+		this.name = name;
 		
 		this.warningLevel = 0;
 	}
-	
-	private int id;
-	private String name;
-	private int warningLevel;
 	
 	/**
 	 * @return the warningLevel

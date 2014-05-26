@@ -7,21 +7,31 @@
  *
  */
 public class Link implements ISchemeObject {
+	
+	private int id;
+	private int warningLevel;
+	private int fromStId;
+	private int toStId;
+	private boolean isTransfer;
 
 	/**
 	 * 
 	 */
-	public Link() {
+	public Link(
+			int id,
+			int fromStId,
+			int toStId,
+			boolean isTransfer
+			) {
 		
-		// TODO: populate
-		
-		this.id = 1;
+		this.id = id;
+		this.fromStId = fromStId;
+		this.toStId = toStId;
+		this.isTransfer = isTransfer;
 		
 		this.warningLevel = 0;
 	}
-	
-	private int id;
-	private int warningLevel;
+
 	
 	/**
 	 * @return the warningLevel
@@ -39,5 +49,28 @@ public class Link implements ISchemeObject {
 
 	public int getId() {
 		return id;
+	}
+
+	/**
+	 * @return the fromStId
+	 */
+	public int getFromStId() {
+		return fromStId;
+	}
+
+
+	/**
+	 * @return the toStId
+	 */
+	public int getToStId() {
+		return toStId;
+	}
+
+
+	/**
+	 * @return the isTransfer
+	 */
+	public boolean isTransfer() {
+		return isTransfer;
 	}
 }
