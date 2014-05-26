@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -16,8 +18,16 @@ public class DummyPreprocessor implements IDataPreprocessor {
 	 */
 	@Override
 	public Document[] executeOn(Object[] rawDocuments) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Document> list = new ArrayList<Document>();
+		
+		for(Object o: rawDocuments) {
+			String text = (String)o;
+			
+			list.add(new Document(text, null, 0));
+		}
+		
+		Document[] example = {};
+		return list.toArray(example);
 	}
 
 }
