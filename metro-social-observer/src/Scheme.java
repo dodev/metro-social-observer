@@ -210,7 +210,7 @@ public class Scheme implements INamedSchemeObject {
 				end2 = buf;
 			}
 			
-			for (int i = end1; i < end2; i++) {
+			for (int i = end1; i <= end2; i++) {
 				res.add((Station)stationList.get(i));
 			}
 		}
@@ -223,13 +223,12 @@ public class Scheme implements INamedSchemeObject {
 		if (stA.getLineId() != stB.getLineId()) {
 			return null;
 		}
-		List linkList = this.getLineById(stA.getLineId()).getLinks();
 		ArrayList<Link> res = new ArrayList<Link>();
 		
 		Station[] stationArr = this.getStationsBetween(stA, stB);
 		
 		for (int i = 0; i < stationArr.length - 1; i++) {
-			this.getLinkBetweenStations(stationArr[i], stationArr[i-1]);
+			res.add(this.getLinkBetweenStations(stationArr[i], stationArr[i+1]));
 		}
 		
 		Link[] demoArr = {};
