@@ -33,7 +33,7 @@ public class DummyFactory implements IAnalyzerFactory {
 	 */
 	@Override
 	public IDataProcessor getDataProcessor() {
-		return new DummyProcessor();
+		return new TemplateDetector();
 	}
 
 }
