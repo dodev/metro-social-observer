@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  */
 public abstract class AbstractTemplate {
 	
-	private Pattern regex;
+	protected Pattern regex;
 	private int delta;
 
 	/**
@@ -28,7 +28,7 @@ public abstract class AbstractTemplate {
 	public boolean match(String text) {
 		Matcher matcher = this.regex.matcher(text);
 		
-		return matcher.matches();
+		return matcher.find();
 	}
 	
 	public abstract ISchemeObject[] extractObjects(String text, Scheme scheme);
