@@ -42,6 +42,6 @@ public class DummyTweetPreprocessor implements IDataPreprocessor {
 	}
 	
 	private String normalizeText(String text) {
-		return text.toLowerCase().replaceAll("[@#\"\'\u00AB\u00BB]", " ");
+		return text.toLowerCase().replaceAll("[@#\"\'\u00AB\u00BB]", "");
 	}
 }
