@@ -17,6 +17,7 @@ public class DummyFactory implements IAnalyzerFactory {
 	 */
 	@Override
 	public IDataSource getDataSource() {
+//		return new TwitterSearchSource();
 		return new DummySource();
 	}
 
@@ -25,6 +26,7 @@ public class DummyFactory implements IAnalyzerFactory {
 	 */
 	@Override
 	public IDataPreprocessor getDataPreprocessor() {
+		//return new Twitter4jPreprocessor();
 		return new DummyPreprocessor();
 	}
 
