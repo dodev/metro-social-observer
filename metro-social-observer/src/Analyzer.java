@@ -42,8 +42,9 @@ public class Analyzer {
 		this.isAliveCheckTime = Integer.parseInt(conf.get("is-alive-check-time-ms"), 10);
 		this.isAlive = false;
 		
-		this.factory = new DummyFactory();
+		//this.factory = new DummyFactory();
 		//this.factory = new TwitterSearchAnalyzerFactory();
+		this.factory = new DummyTweetAnalyzerFactory();
 		this.dataSource = factory.getDataSource();
 		this.preprocessor = factory.getDataPreprocessor();
 		this.processor = factory.getDataProcessor();

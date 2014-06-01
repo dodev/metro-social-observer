@@ -32,7 +32,7 @@ public class Configurator {
 		this.hash.put("retweet-scale-ratio", "10");
 		this.hash.put("favorite-scale-ratio", "5");
 		this.hash.put("dummy-data-url", "http://localhost/dummy-data/");
-		this.hash.put("dummy-tweets-url", "http://localhost/dummy-url/");
+		this.hash.put("dummy-tweet-url", "http://localhost/dummy-tweets/");
 		
 		// TODO: load from file
 	}
