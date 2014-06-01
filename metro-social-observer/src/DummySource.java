@@ -16,12 +16,15 @@ import org.json.simple.parser.JSONParser;
  *
  */
 public class DummySource implements IDataSource {
+	
+	private String sourceUrl;
 
 	/**
 	 * 
 	 */
 	public DummySource() {
-		// TODO Auto-generated constructor stub
+		Configurator conf = Configurator.getInstance();
+		this.sourceUrl = conf.get("dummy-data-url");
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +35,7 @@ public class DummySource implements IDataSource {
 		ArrayList<String> list = new ArrayList<String>();
 		
 		try {
-			String jsonString = this.readUrl("http://localhost/dummy-tweets/" + target.getId() + ".json");
+			String jsonString = this.readUrl(this.sourceUrl + target.getId() + ".json");
 			JSONParser parser = new JSONParser();
 			JSONArray array = (JSONArray)parser.parse(jsonString);
 			

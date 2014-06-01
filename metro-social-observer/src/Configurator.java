@@ -31,6 +31,8 @@ public class Configurator {
 		this.hash.put("is-alive-check-time-ms", "1000");
 		this.hash.put("retweet-scale-ratio", "10");
 		this.hash.put("favorite-scale-ratio", "5");
+		this.hash.put("dummy-data-url", "http://localhost/dummy-data/");
+		this.hash.put("dummy-tweets-url", "http://localhost/dummy-url/");
 		
 		// TODO: load from file
 	}
@@ -40,6 +42,6 @@ public class Configurator {
 			return hash.get(key);
 		}
 		
-		return null;	
+		return "";	
 	}
 }
