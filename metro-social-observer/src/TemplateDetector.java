@@ -17,7 +17,8 @@ public class TemplateDetector implements IDataProcessor {
 	 */
 	public TemplateDetector() {
 		this.templates = new AbstractTemplate[]{
-				new DummyTemplate()
+				//new DummyTemplate()
+				new TrainTemplate()
 		};
 		this.threshold = 0;
 	}
