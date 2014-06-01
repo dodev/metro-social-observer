@@ -26,7 +26,7 @@ public class DummyFactory implements IAnalyzerFactory {
 	 */
 	@Override
 	public IDataPreprocessor getDataPreprocessor() {
-		//return new Twitter4jPreprocessor();
+//		return new Twitter4jPreprocessor();
 		return new DummyPreprocessor();
 	}
 

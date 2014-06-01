@@ -28,7 +28,7 @@ public class Twitter4jPreprocessor implements IDataPreprocessor {
 			Status tweet = (Status)o;
 
 			res.add(new Document(
-					tweet.getText(),
+					this.normalizeText(tweet.getText()),
 					this.getKeywords(tweet),
 					this.getRating(tweet)
 				));
@@ -49,5 +49,9 @@ public class Twitter4jPreprocessor implements IDataPreprocessor {
 	private int getRating(Status tweet) {
 		return tweet.getRetweetCount() * this.retweetScaleRatio +
 				tweet.getFavoriteCount() * this.favoriteScaleRatio;
+	}
+	
+	private String normalizeText(String text) {
+		return text.toLowerCase().replaceAll("[@#\"\'\u00AB\u00BB]", " ");
 	}
 }
