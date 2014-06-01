@@ -16,7 +16,7 @@ public class DummyTemplate extends AbstractTemplate {
 	 * @param delta
 	 */
 	public DummyTemplate() {
-		super(".*", 1);
+		super("^[^\\s]*,[^\\s]*$", 1);
 	}
 
 	/* (non-Javadoc)
