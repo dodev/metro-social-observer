@@ -43,6 +43,7 @@ public class Analyzer {
 		this.isAlive = false;
 		
 		this.factory = new DummyFactory();
+		//this.factory = new TwitterSearchAnalyzerFactory();
 		this.dataSource = factory.getDataSource();
 		this.preprocessor = factory.getDataPreprocessor();
 		this.processor = factory.getDataProcessor();

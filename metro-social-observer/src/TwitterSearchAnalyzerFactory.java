@@ -2,18 +2,10 @@
  * @author dodev
  *
  */
-public class DummyFactory implements IAnalyzerFactory {
+public class TwitterSearchAnalyzerFactory implements IAnalyzerFactory {
 
-	/**
-	 * A class for generating debugging instances of the analyzer architecture
-	 */
-
-	/* (non-Javadoc)
-	 * @see IAnalyzerFactory#getDataSource()
-	 */
-	@Override
 	public IDataSource getDataSource() {
-		return new DummySource();
+		return new TwitterSearchSource();
 	}
 
 	/* (non-Javadoc)
@@ -21,7 +13,7 @@ public class DummyFactory implements IAnalyzerFactory {
 	 */
 	@Override
 	public IDataPreprocessor getDataPreprocessor() {
-		return new DummyPreprocessor();
+		return new Twitter4jPreprocessor();
 	}
 
 	/* (non-Javadoc)
